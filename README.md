@@ -1,198 +1,114 @@
-# POCKET TASKS
+# Pocket Tasks
 
-## Table of Content:
-1. Getting Started
-2. Storage medium
-3. Settings Page
-4. App support system
+## Overview
+Pocket Tasks is a Flutter-based personal task manager built for offline use. It helps users create, edit, and complete tasks, store task notes, set due dates, and use light/dark themes with local persistence via Hive.
 
-## Getting Started (Overview)
+This project is optimized for quick task capture and daily planning, with a clean UI and simple navigation.
 
-The Pocket Task application is not just one of the many task planner applications on both the Play and App stores.
+## Key Features
+- Add, update, and delete tasks
+- Mark tasks as completed using a checkbox
+- View task details and add/edit notes
+- Set a due date for each task
+- Filter tasks by: All, Active, Completed, Newest, Oldest
+- Persistent local storage with Hive
+- Light and dark theme toggle in Settings
+- Drawer navigation with Home and Settings screens
 
-Integrating your Google Calender, alongside AI, endless possibilities are unlocked through the use of this application.
+## App Structure
+- `lib/main.dart`: App entry point, Hive initialization, and provider setup
+- `lib/view/home_screen.dart`: Main task list and filtering UI
+- `lib/view/task_detail_screen.dart`: Task detail screen with due date and note editing
+- `lib/view/my_settings.dart`: Settings screen with theme toggle
+- `lib/widgets/my_drawer.dart`: Drawer navigation
+- `lib/model/state_mgt/taskProvider.dart`: Provider-based state management
+- `lib/model/data/database.dart`: Hive-backed task storage logic
+- `lib/model/data/taskdatabase.dart`: Task model and Hive adapter
+- `lib/model/data/sub_tasksdatabase.dart`: Subtask note model (present in the data model)
+- `lib/model/theme_mode/theme_Provider.dart`: Theme state management
 
-Pocket Tasks is designed for students, entrepreneurs, managers, basically all works of life.
+## Architecture
+Pocket Tasks uses a simple MVC-like structure with Provider for state management and Hive for local persistence.
 
+- UI components live in `lib/view` and `lib/widgets`
+- Data models and Hive logic live in `lib/model/data`
+- App state is managed in `lib/model/state_mgt`
+- Theme control lives in `lib/model/theme_mode`
 
-- Brief description of the app
-- problem it solves
-- target users (e,g students and professionals)
-- key value proposition
+## Dependencies
+- Flutter SDK
+- provider
+- hive
+- hive_flutter
+- path_provider
+- google_fonts
+- iconsax
+- http
 
-## Demo /Preview
-- Posket Tasks Welcome Screen
-  
- ![alt text](<WhatsApp Image 2026-05-08 at 3.54.09 PM.jpeg>)
- 
-- Side Panel Screen
+## Getting Started
+### Prerequisites
+- Flutter SDK installed
+- Android Studio, VS Code, or another IDE configured for Flutter development
+- Device or emulator ready to run the app
 
- ![alt text](<WhatsApp Image 2026-05-08 at 3.54.08 PM.jpeg>)
--  GIFs or screen recording
-  
-  <video controls src="App ScreenRecord.mp4" title="Title"></video>
-<!-- -  Link to live demo (If avaialble)  -->
--  APK download
-
-## Features
-Break into sub categories:
-* Core features
-  * task creation
-  * task editing and deleting
-  * task completion tracking
-* advanced features
-  * goal-based task grouping
-  * notification and remainders
-  * offline support (e.g hive storage)
-  * dark mode
-* UX features
-  * Drag and drop
-  * filtering/sorting
-  * search functionality
-
-## Tech stack
-- Frontend
-  
-  This project was built using Flutter framework for the front-end.
-
-- Backend and Databse: 
-  
-  Hive local storage is being utilized for the data storage.
-- State Mangment.:
-- API/services:
-
-## Architecture 
-- App arcjitecture pattern (MVC, MVVM etc)
-  
-  The MVVM architecture is used for this application
-- folder structure explanation
-- data flow overview
-  
-## Installation and Setup
-Step-by-step instructions:
-1. Pre-requisites
-2. Steps
-3. Environemnt Setup
-
-
-//The taskdatabase has the sub-task option to be able to add list of subtasks (but was not used in this app)
-
-## Installation & Setup
-
-Step-by-step instructions:
-
-Prerequisites
-Flutter SDK version
-IDE (VS Code / Android Studio)
-Steps
-```git clone <repo-link>
-cd <project-folder>
+### Run the App
+```bash
+git clone <repo-url>
+cd pocket_tasks
 flutter pub get
 flutter run
 ```
 
-Environment Setup
-API keys (if any)
-Firebase setup (if used)
+## Usage
+### Home Screen
+- Tap the plus button to add a new task
+- Use chips to filter tasks by status and order
+- Tap a task to open the detail screen
+- Long press a task to delete it
+- Use the checkbox to mark a task complete
 
-## Usage Guide
-How to create a task
-How to create goals
-How to mark tasks as complete
-Navigation overview
+### Task Detail Screen
+- Set or change the due date using the date picker
+- Tap the note card to add a new note
+- Long press the note card to edit the existing note
 
-## Project Structure
-
-Example:
-
-```markdown
-lib/
- ┣ models/
- ┣ views/
- ┣ controllers/
- ┣ services/
- ┣ widgets/
-```
-Brief explanation of each folder
-
-## State Management Logic
-How state is handled
-Why you chose that approach
-
-//The chosen state management approach is Provider. Tasks are stored in TaskDatabase.
- The Database file then handles the various TaskDatabase logic. 
- The TaskProvider file then handles in turn the Database functions.
+### Settings
+- Enable or disable dark mode
 
 ## Data Storage
-How data is stored (Hive, local DB)
-Schema / model structure
-Persistence strategy
+Tasks are stored locally using Hive in the `taskBox` box. Each task is backed by the `Taskdatabase` model and includes:
+- Title
+- Notes
+- Completion state
+- Creation / due date
+- An optional list of subtask notes via `SubTasksdatabase`
 
-This app makes use of Hive Local Storage method for user data storage.
-The app is loaded from the main.dart file, which initializes the Hive box, registers the adapters and then loads then in HomeScreen page.
+## Tests
+The repository includes basic Flutter tests for core UI and model behavior:
+- `test/home_screen_test.dart`
+- `test/my_drawer_test.dart`
+- `test/taskdatabase_test.dart`
+- `test/theme_provider_test.dart`
 
-## Screens & UI Breakdown
-Home screen
-Task detail screen
-Goal screen
-Settings screen
-
-
-//The HOME page displays the list of created tasks, with the option to sort them based on All Available, Active tasks, Completed tasks, Newest and Oldest tasks.
-
-//When a task is tapped on, it displays the task details, which gives the user the option to set a due date, make additional notes.
-//When a task is long tapped on, it pops up the delete task option
-
-##TASK DETAILS SCREEN
-//To select a due date, tap on the calendar icon.
-//To add note, tap on the blank container space which pops up a dialog to inout the text.
-//To edit note, long tap on the existing note.
-
-
-## Performance Considerations
-Optimization techniques used
-Lazy loading, caching, etc.
-
-## Challenges & Solutions
-Real problems faced during development
-How you solved them
-
-## Future Improvements / Roadmap
-Cloud sync
-Multi-device support
-Collaboration features
-AI-based task suggestions
-
-## Testing
-Unit tests
-Widget tests
-Manual testing approach
-
-## Deployment
-How to build APK / IPA
-Publishing steps (Play Store, etc.)
-
-## Contributing
-Guidelines for contributors
-Code style rules
-Branching strategy
+## Future Improvements
+- Add search functionality
+- Add notification/reminder support
+- Implement true subtask UI support
+- Add Google Calendar or cloud sync integrations
+- Add more robust unit and widget tests
 
 ## License
-MIT / Apache / etc.
+This project is currently unlicensed. Add a license file if you want to share it publicly.
 
 ## Author
 Daniel Balogun
 
-Portfolio / GitHub / LinkedIn
-
-## Acknowledgements
-Libraries used
-Inspiration
-Mentors or resources
-
-## FAQ (Optional but powerful)
-Common issues
-Troubleshooting steps
-
 ## Contact
-balogundaniel06@gmail.com
+- Email: balogundaniel06@gmail.com
+- GitHub: (add your GitHub profile link)
+- LinkedIn: (add your LinkedIn profile link)
+
+## Notes
+- The current implementation is offline-first and does not include external API or calendar integrations.
+- The `SubTasksdatabase` model is available in the data layer but not fully surfaced in the UI yet.
+
