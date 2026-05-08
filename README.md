@@ -53,7 +53,7 @@ Pocket Tasks uses a simple MVC-like structure with Provider for state management
 
 ### Run the App
 ```bash
-git clone <repo-url>
+git clone <https://github.com/Adenonso/pocket_tasks>
 cd pocket_tasks
 flutter pub get
 flutter run
@@ -67,10 +67,16 @@ flutter run
 - Long press a task to delete it
 - Use the checkbox to mark a task complete
 
+![Home Screen](./assets/pocket_task_1.jpeg)
+
 ### Task Detail Screen
 - Set or change the due date using the date picker
 - Tap the note card to add a new note
 - Long press the note card to edit the existing note
+
+![Home Screen](./assets/pocket_task_3.jpeg)
+
+![Home Screen](./assets/pocket_task_4.jpeg)
 
 ### Settings
 - Enable or disable dark mode
@@ -97,16 +103,14 @@ The repository includes basic Flutter tests for core UI and model behavior:
 - Add Google Calendar or cloud sync integrations
 - Add more robust unit and widget tests
 
-## License
-This project is currently unlicensed. Add a license file if you want to share it publicly.
 
 ## Author
 Daniel Balogun
 
 ## Contact
 - Email: balogundaniel06@gmail.com
-- GitHub: (add your GitHub profile link)
-- LinkedIn: (add your LinkedIn profile link)
+- GitHub: https://github.com/Adenonso
+- LinkedIn: [Daniel Balogun](https://www.linkedin.com/in/daniel-balogun-22380a222?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 
 ## Notes
 - The current implementation is offline-first and does not include external API or calendar integrations.
